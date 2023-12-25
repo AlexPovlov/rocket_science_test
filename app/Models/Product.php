@@ -28,7 +28,7 @@ class Product extends Model
 
         return $query->whereHas('properties', function ($query) use ($filter) {
             foreach ($filter as $key => $value) {
-                $query->whereName($key)->whereValue($value);
+                $query->whereName($key)->whereIn('value', $value);
             }
         });
 
